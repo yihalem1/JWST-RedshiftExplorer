@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1d3a"/>
+      <stop offset="100%" stop-color="#1a3f6b"/>
+    </linearGradient>
+    <linearGradient id="gBox" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e9eef5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="360" fill="url(#gSky)"/>
+  <g fill="#ffffff" opacity="0.55">
+    <circle cx="60" cy="40" r="1"/><circle cx="150" cy="20" r="1.2"/><circle cx="240" cy="55" r="0.9"/>
+    <circle cx="330" cy="30" r="1.1"/><circle cx="420" cy="60" r="1"/><circle cx="540" cy="25" r="1.3"/>
+    <circle cx="660" cy="45" r="1"/><circle cx="780" cy="20" r="1.1"/><circle cx="860" cy="55" r="0.9"/>
+    <circle cx="100" cy="320" r="1"/><circle cx="300" cy="335" r="1.1"/><circle cx="520" cy="325" r="0.9"/>
+    <circle cx="720" cy="340" r="1"/><circle cx="840" cy="315" r="1.2"/>
+  </g>
+
+  <text x="450" y="40" fill="#fff" font-size="20" font-weight="bold" text-anchor="middle">JWST-RedshiftExplorer — Pipeline Overview</text>
+
+  <!-- LR input -->
+  <rect x="30" y="140" width="140" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="100" y="170" font-size="14" font-weight="bold" text-anchor="middle">Noisy LR Galaxy</text>
+  <text x="100" y="190" font-size="12" text-anchor="middle">12 × 12 patch</text>
+  <text x="100" y="208" font-size="11" fill="#555" text-anchor="middle">(high-redshift / JWST-like)</text>
+
+  <!-- Pseudo-clean -->
+  <rect x="220" y="90" width="160" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="300" y="120" font-size="13" font-weight="bold" text-anchor="middle">Pseudo-Clean Net</text>
+  <text x="300" y="140" font-size="11" text-anchor="middle">CycleGAN-style</text>
+  <text x="300" y="158" font-size="11" fill="#555" text-anchor="middle">denoise &amp; deconvolve</text>
+
+  <!-- Diffusion / SR -->
+  <rect x="220" y="200" width="160" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="300" y="230" font-size="13" font-weight="bold" text-anchor="middle">Diffusion Prior</text>
+  <text x="300" y="250" font-size="11" text-anchor="middle">DDPM over clean HR</text>
+  <text x="300" y="268" font-size="11" fill="#555" text-anchor="middle">learns galaxy manifold</text>
+
+  <!-- SR network -->
+  <rect x="430" y="140" width="170" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="515" y="170" font-size="13" font-weight="bold" text-anchor="middle">SR Network (ESRGAN)</text>
+  <text x="515" y="190" font-size="11" text-anchor="middle">×4 super-resolution</text>
+  <text x="515" y="208" font-size="11" fill="#555" text-anchor="middle">+ VGG / GAN loss</text>
+
+  <!-- Bayesian -->
+  <rect x="650" y="90" width="160" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="730" y="120" font-size="13" font-weight="bold" text-anchor="middle">Bayesian Inference</text>
+  <text x="730" y="140" font-size="11" text-anchor="middle">posterior over</text>
+  <text x="730" y="158" font-size="11" fill="#555" text-anchor="middle">redshift / morphology</text>
+
+  <!-- HR output -->
+  <rect x="650" y="200" width="160" height="90" rx="10" fill="url(#gBox)" stroke="#333"/>
+  <text x="730" y="230" font-size="13" font-weight="bold" text-anchor="middle">HR Reconstruction</text>
+  <text x="730" y="250" font-size="11" text-anchor="middle">48 × 48 clean galaxy</text>
+  <text x="730" y="268" font-size="11" fill="#555" text-anchor="middle">+ uncertainty map</text>
+
+  <!-- arrows -->
+  <line x1="170" y1="170" x2="220" y2="135" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="170" y1="200" x2="220" y2="240" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="380" y1="135" x2="430" y2="170" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="380" y1="245" x2="430" y2="210" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="600" y1="170" x2="650" y2="135" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="600" y1="200" x2="650" y2="240" stroke="#222" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="450" y="330" fill="#cfd8e7" font-size="12" text-anchor="middle">
+    Paired and unpaired training supported · end-to-end trainable · multi-GPU via torch.distributed
+  </text>
+</svg>

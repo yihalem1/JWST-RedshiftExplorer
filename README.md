@@ -145,7 +145,6 @@ The figures below are real JWST observations of the kinds of objects this projec
 
 ## Results
 
-> Drop your own result tiles (LR input / reconstruction / HR ground truth) into `misc/` and uncomment the block below. Suggested filenames are shown.
 
 <!--
 <p align="center">

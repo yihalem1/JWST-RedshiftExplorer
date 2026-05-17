@@ -141,14 +141,6 @@ The figures below are real JWST observations of the kinds of objects this projec
   </tr>
 </table>
 
-<<<<<<< HEAD
----
-
-## Results
-
-=======
->>>>>>> aa8f26f (edit readme file)
-
 <!--
 <p align="center">
   <img src="misc/result_lr.png"     alt="Noisy LR input"        width="240"/>
